@@ -328,9 +328,9 @@ class TrajectoryCollector:
             )
 
             batch_input.meta_info = gen_batch.meta_info
-            print('=='*50)
-            print(f'DEBUG | agent_system/multi_turn_rollout/rollout_loop.py | generate_sequences')
-            print('=='*50)
+            # print('=='*50)
+            # print(f'DEBUG | agent_system/multi_turn_rollout/rollout_loop.py | generate_sequences')
+            # print('=='*50)
             batch_output = actor_rollout_wg.generate_sequences(batch_input)
 
             batch.non_tensor_batch['uid'] = uid_batch
