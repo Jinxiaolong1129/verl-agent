@@ -1,15 +1,21 @@
-import torch
+import uuid
+from typing import Dict, List
+
 import numpy as np
+import torch
+from transformers import PreTrainedTokenizer
+
+import verl.utils.torch_functional as verl_F
+from agent_system.environments import EnvironmentManagerBase
+from agent_system.multi_turn_rollout.utils import (filter_group_data,
+                                                   process_image,
+                                                   to_list_of_dict,
+                                                   torch_to_numpy)
 from verl import DataProto
+from verl.models.transformers.qwen2_vl import get_rope_index
 from verl.utils.dataset.rl_dataset import collate_fn
 from verl.utils.model import compute_position_id_with_mask
-import verl.utils.torch_functional as verl_F
-from transformers import PreTrainedTokenizer
-import uuid
-from verl.models.transformers.qwen2_vl import get_rope_index
-from agent_system.multi_turn_rollout.utils import process_image, to_list_of_dict, torch_to_numpy, filter_group_data
-from agent_system.environments import EnvironmentManagerBase
-from typing import List, Dict
+
 
 class TrajectoryCollector:
     def __init__(self, config, tokenizer: PreTrainedTokenizer, processor=None):
@@ -322,7 +328,9 @@ class TrajectoryCollector:
             )
 
             batch_input.meta_info = gen_batch.meta_info
-
+            print('=='*50)
+            print(f'DEBUG | agent_system/multi_turn_rollout/rollout_loop.py | generate_sequences')
+            print('=='*50)
             batch_output = actor_rollout_wg.generate_sequences(batch_input)
 
             batch.non_tensor_batch['uid'] = uid_batch
