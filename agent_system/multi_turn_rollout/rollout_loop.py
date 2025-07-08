@@ -341,7 +341,7 @@ class TrajectoryCollector:
             text_actions = self.tokenizer.batch_decode(batch.batch['responses'], skip_special_tokens=True)
             
             next_obs, rewards, dones, infos = envs.step(text_actions)
-
+            print(f'step: {step} | agent_system/multi_turn_rollout/rollout_loop.py | generate_sequences')
             
             if len(rewards.shape) == 2:
                 rewards = rewards.squeeze(1)

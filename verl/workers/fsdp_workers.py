@@ -637,7 +637,7 @@ class ActorRolloutRefWorker(Worker):
     def generate_sequences(self, prompts: DataProto):
         # Support all hardwares
         prompts = prompts.to(get_torch_device().current_device())
-
+        print(f'verl-agent/verl/workers/fsdp_workers.py | generate_sequences')
         assert self._is_rollout
 
         meta_info = {

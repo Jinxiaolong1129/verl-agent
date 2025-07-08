@@ -185,7 +185,7 @@ class vLLMRollout(BaseRollout):
         # rebuild vllm cache engine
         if self.config.free_cache_engine:
             self.inference_engine.init_cache_engine()
-
+        print(f'verl-agent/verl/workers/rollout/vllm_rollout/vllm_rollout.py | generate_sequences')
         idx = prompts.batch["input_ids"]  # (bs, prompt_length)
         # left-padded attention_mask
         attention_mask = prompts.batch["attention_mask"]

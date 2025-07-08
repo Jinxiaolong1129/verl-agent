@@ -148,6 +148,9 @@ pip3 install flash-attn==2.7.4.post1 --no-build-isolation
 pip3 install -e .
 
 pip3 install vllm==0.8.5
+pip3 install gymnasium==0.29.1
+pip3 install stable-baselines3==2.6.0
+pip install alfworld
 ```
 
 ## Install Supported Environments
